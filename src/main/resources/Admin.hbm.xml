@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-6 16:15:33 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.hxzy.order.model.Admin" table="t_admin">
+        <id name="id" type="int">
+            <column name="a_id" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="a_name" />
+        </property>
+        <property name="username" type="java.lang.String">
+            <column name="a_username" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="a_password" />
+        </property>
+        <property name="loginCount" type="int">
+            <column name="a_login_count" />
+        </property>
+        <many-to-one name="role" class="com.hxzy.order.model.Role" fetch="join">
+            <column name="a_r_id" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

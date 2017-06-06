@@ -31,7 +31,8 @@
 		
 		<property name="mappingResources">
 			<list>
-				<value>com/user/model/User.hbm.xml</value>
+				<value>classpath:Admin.hbm.xml</value>
+				<value>classpath:Role.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -39,20 +40,19 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>
-				<!-- <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop> -->
 			</props>
 		</property>
 	</bean>
 
-	<bean id="userDao" class="com.user.dao.impl.UserDaoImpl">
+	<bean id="adminDao" class="com.hxzy.order.dao.impl.AdminDaoImpl">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory"/>
 		</property>
 	</bean>
 	
-	<bean id="userService" class="com.user.service.impl.UserServiceImpl">
-		<property name="userDao">
-			<ref bean="userDao"/>
+	<bean id="adminService" class="com.hxzy.order.service.impl.AdminServiceImpl">
+		<property name="adminDao">
+			<ref bean="adminDao"/>
 		</property>
 	</bean>
 	
@@ -73,7 +73,7 @@
 	</tx:advice>
 	
 	<aop:config>
-		<aop:pointcut expression="execution(* com.user.service.impl.*.*(..))" id="mypointcut"/>
+		<aop:pointcut expression="execution(* com.hxzy.order.service.impl.*.*(..))" id="mypointcut"/>
 		<aop:advisor advice-ref="trasactionAdvice" pointcut-ref="mypointcut"/>
 	</aop:config>
 	
