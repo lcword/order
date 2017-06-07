@@ -8,7 +8,7 @@
 	<name>java-usermanager_v1.0 Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<springframwork-version>4.3.7.RELEASE</springframwork-version>
+		<springframwork-version>4.3.6.RELEASE</springframwork-version>
 	</properties>
 
 	<dependencies>

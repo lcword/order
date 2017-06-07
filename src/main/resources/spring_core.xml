@@ -31,8 +31,8 @@
 		
 		<property name="mappingResources">
 			<list>
-				<value>classpath:Admin.hbm.xml</value>
-				<value>classpath:Role.hbm.xml</value>
+				<value>com\hxzy\order\model\Admin.hbm.xml</value>
+				<value>com\hxzy\order\model\Role.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

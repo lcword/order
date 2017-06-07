@@ -11,6 +11,10 @@ import com.hxzy.order.service.intf.AdminService;
 public class AdminServiceImpl implements AdminService{
 	private AdminDao adminDao;
 	
+	public void setAdminDao(AdminDao adminDao) {
+		this.adminDao = adminDao;
+	}
+
 	@Override
 	public void add(Admin admin) {
 		adminDao.add(admin);
