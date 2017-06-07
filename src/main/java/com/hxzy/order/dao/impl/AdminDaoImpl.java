@@ -5,15 +5,17 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import org.springframework.orm.hibernate5.HibernateCallback;
-import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate4.HibernateCallback;
+import org.springframework.stereotype.Repository;
 
 import com.hxzy.order.dao.intf.AdminDao;
 import com.hxzy.order.dto.AdminDto;
 import com.hxzy.order.model.Admin;
 import com.hxzy.order.page.Page;
+import com.hxzy.order.util.MyHibernateDaoSupport;
 
-public class AdminDaoImpl extends HibernateDaoSupport implements AdminDao {
+@Repository("adminDao")
+public class AdminDaoImpl extends MyHibernateDaoSupport implements AdminDao {
 
 	@Override
 	public void add(Admin Admin) {
@@ -25,7 +27,6 @@ public class AdminDaoImpl extends HibernateDaoSupport implements AdminDao {
 		String[] ids = idStr.split(",");
 
 		final String queryString = "DELETE Admin WHERE id in (:ids) ";
-
 		getHibernateTemplate().execute(new HibernateCallback<Object>() {
 			@Override
 			public Object doInHibernate(Session session) throws HibernateException {

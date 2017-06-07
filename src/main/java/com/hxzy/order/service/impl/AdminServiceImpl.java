@@ -2,19 +2,20 @@ package com.hxzy.order.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.hxzy.order.dao.intf.AdminDao;
 import com.hxzy.order.dto.AdminDto;
 import com.hxzy.order.model.Admin;
 import com.hxzy.order.page.Page;
 import com.hxzy.order.service.intf.AdminService;
 
+@Service("adminService")
 public class AdminServiceImpl implements AdminService{
+	@Autowired
 	private AdminDao adminDao;
 	
-	public void setAdminDao(AdminDao adminDao) {
-		this.adminDao = adminDao;
-	}
-
 	@Override
 	public void add(Admin admin) {
 		adminDao.add(admin);
