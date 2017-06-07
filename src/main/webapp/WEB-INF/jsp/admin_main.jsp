@@ -92,11 +92,11 @@
 	/*跳转*/
 	function turnPage(obj){
 		var page = $(obj).val();
-		window.location.href = "query_admin?type=turn&&curPageStr="+page+"&&conditionType=${adminDto.conditionType}&&condition=${adminDto.condition}&&sex=${adminDto.sex}&&minAge=${adminDto.minAge}&&maxAge=${adminDto.maxAge}";
+		window.location.href = "query_admin?type=turn&&curPageStr="+page;
 	}
 	/*查询全部*/
 	function queryAll(){
-		window.location.href = "query_admin?conditionType=&&condition=&&sex=-1&&minAge=&&maxAge=";
+		window.location.href = "query_admin";
 	}
 	$(function(){
 		$("tr:even").css("background","#EEE5DE");
@@ -106,60 +106,16 @@
 </script>
 </head>
 <body>
-	<div id="select_div">
-		<form action="query_admin" method="post">
-			<lable style="font-size:15px;">年龄</lable>
-			<input name="minAge" value="${adminDto.minAge}" class="age" />
-			<lable> - </lable>
-			<input name="maxAge" value="${adminDto.maxAge}" class="age" />&nbsp;
-			<lable style="font-size:15px;">性别</lable>
-			<select name="sex">
-				<c:if test="${adminDto.sex == 1}">
-					<option name="sex" value="-1">-</option>
-					<option name="sex" value="1"  selected="selected">男</option>
-					<option name="sex" value="0">女</option>
-				</c:if>
-				<%-- el表达式==也可以比较字符串的长度 --%>
-				<c:if test="${adminDto.sex == 0 and !adminDto.sex == ''}">
-					<option name="sex" value="-1">-</option>
-					<option name="sex" value="1">男</option>
-					<option name="sex" value="0"  selected="selected">女</option>
-				</c:if>
-				<c:if test="${adminDto.sex == -1 or empty adminDto.sex}">
-					<option name="sex" value="-1" selected="selected">-</option>
-					<option name="sex" value="1">男</option>
-					<option name="sex" value="0">女</option>
-				</c:if>
-			</select>&nbsp;
-			<c:if test="${adminDto.conditionType == 'adminname'}">
-				<select name="conditionType">
-					<option name="conditionType" value="id">编号</option>
-					<option name="conditionType" value="username" selected="selected">用户名</option>
-				</select>
-				<input id="condition" name="condition" placeholder="请输入查询条件" value="${adminDto.condition }" />
-			</c:if>
-			<c:if test="${adminDto.conditionType == 'id' or empty adminDto.conditionType}">
-				<select name="conditionType">
-					<option name="conditionType" value="id" selected="selected">编号</option>
-					<option name="conditionType" value="username">用户名</option>
-				</select>
-				<input id="condition" name="condition" placeholder="请输入查询条件" value="${adminDto.condition }" />
-			</c:if>
-			<input type="submit" value="查询"/>
-			<input type="button" value="查询全部" onclick="queryAll();"/>
-		</form>
-	</div>
-	<br/>
 	<table cellpadding="0" cellspacing="0" border="1">
 		<tr>
 			<th>全选<input type="checkbox" id="allcheckbox"
 				onclick="allCheckbox()" /></th>
 			<th>编号</th>
-			<th>头像</th>
+			<th>姓名</th>
 			<th>用户名</th>
 			<th>密码</th>
-			<th>性别</th>
-			<th>年龄</th>
+			<th>登录次数</th>
+			<th>角色</th>
 			<th colspan="2">操作</th>
 		</tr>
 		<c:forEach items="${admin_list }" var="admin">
@@ -184,12 +140,12 @@
 	<div id="page_div">
 		<lable>总共${admin_page.allCount }条</lable>
 		<c:if test="${admin_page.curPage > 1 }">
-			<a href="query_admin?type=turn&&curPageStr=1&&conditionType=${adminDto.conditionType}&&condition=${adminDto.condition}&&sex=${adminDto.sex}&&minAge=${adminDto.minAge}&&maxAge=${adminDto.maxAge}">首页</a>
-			<a href="query_admin?type=prePage&&curPageStr=${admin_page.curPage }&&conditionType=${adminDto.conditionType}&&condition=${adminDto.condition}&&sex=${adminDto.sex}&&minAge=${adminDto.minAge}&&maxAge=${adminDto.maxAge}">上一页</a>
+			<a href="query_admin?type=turn&&curPageStr=1">首页</a>
+			<a href="query_admin?type=prePage&&curPageStr=${admin_page.curPage }">上一页</a>
 		</c:if>
 		<c:if test="${admin_page.curPage < admin_page.maxPage }">
-			<a href="query_admin?type=nextPage&&curPageStr=${admin_page.curPage }&&conditionType=${adminDto.conditionType}&&condition=${adminDto.condition}&&sex=${adminDto.sex}&&minAge=${adminDto.minAge}&&maxAge=${adminDto.maxAge}">下一页</a>
-			<a href="query_admin?type=turn&&curPageStr=${admin_page.maxPage}&&conditionType=${adminDto.conditionType}&&condition=${adminDto.condition}&&sex=${adminDto.sex}&&minAge=${adminDto.minAge}&&maxAge=${adminDto.maxAge}">末页</a>
+			<a href="query_admin?type=nextPage&&curPageStr=${admin_page.curPage }">下一页</a>
+			<a href="query_admin?type=turn&&curPageStr=${admin_page.maxPage}">末页</a>
 		</c:if>
 		当前第<lable id="cur_page">${admin_page.curPage }</lable>页
 		跳转第<input style="width:15px;" value=""  onchange="turnPage(this);"/>页

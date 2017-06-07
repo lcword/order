@@ -14,28 +14,30 @@ import com.hxzy.order.service.intf.AdminService;
 public class AdminController {
 	@Autowired
 	private AdminService adminService;
-
-	@RequestMapping("pre_add_user")
+	
+	@RequestMapping("pre_add_admin")
 	public String pre_add() {
-		return "update_frame";
+		return "update_admin";
 	}
 
-	@RequestMapping("pre_update_user")
+	@RequestMapping("pre_update_admin")
 	public String pre_update(Admin admin,Map<String,Admin> map) {
-		map.put("user", adminService.queryById(String.valueOf(admin.getId())));
-		return "update_frame";
+		map.put("admin", adminService.queryById(admin.getId()));
+		return "update_admin";
 	}
 
-	@RequestMapping("update_user")
+	@RequestMapping("update_admin")
 	public String update(Admin admin) {
+		System.out.println("update >>>");
+		System.out.println(admin);
 		adminService.update(admin);
 		return "redirect:query_admin";
 	}
 
-	@RequestMapping("delete_user")
-	public String delete(Admin admin) {
-		adminService.delete(String.valueOf(admin.getId()));
-		return "redirect:query_user";
+	@RequestMapping("delete_admin")
+	public String delete(String id) {
+		adminService.delete(id);
+		return "redirect:query_admin";
 	}
 
 	@RequestMapping("check_username")

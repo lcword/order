@@ -1,7 +1,7 @@
 package com.hxzy.order.model;
 
 public class Admin {
-	private int id;
+	private String id;
 	private String name;//操作员姓名
 	private String username;//用户名
 	private String password;//密码
@@ -23,10 +23,10 @@ public class Admin {
 	public Admin() {
 		super();
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {

@@ -5,9 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>智能云点餐</title>
-<link rel="stylesheet" href="static/css/pintuer.css">
-<link rel="stylesheet" href="static/css/admin.css">
-<script src="static/js/jquery.js"></script>
+<link rel="stylesheet" href="./static/css/pintuer.css">
+<link rel="stylesheet" href="./static/css/admin.css">
+<script src="./static/js/jquery.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$(".leftnav h2").click(function() {
@@ -30,7 +30,7 @@
 	<div class="header bg-main">
 		<div class="logo margin-big-left fadein-top">
 			<h1>
-				<img src="static/images/y.jpg" class="radius-circle rotate-hover"
+				<img src="./static/images/y.jpg" class="radius-circle rotate-hover"
 					height="50" alt="" />智能云点餐
 			</h1>
 		</div>
@@ -46,32 +46,39 @@
 			<strong><span class="icon-list"></span>菜单列表</strong>
 		</div>
 		<h2>
-			<span class="icon-user"></span>用户管理
+			<span class="icon-user"></span>操作员管理
 		</h2>
 		<ul style="display: block">
-			<li><a href="query_user" target="right"><span
-					class="icon-caret-right"></span>用户信息</a></li>
-			<li><a href="pre_add_user" target="right"><span
-					class="icon-caret-right"></span>添加用户</a></li>
+			<li><a href="query_admin" target="right"><span
+					class="icon-caret-right"></span>操作员信息</a></li>
+			<li><a href="pre_add_admin" target="right"><span
+					class="icon-caret-right"></span>添加操作员</a></li>
 		</ul>
 		<h2>
 			<span class="icon-pencil-square-o"></span>会员管理
 		</h2>
 		<ul>
-			<li><a href="info.html" target="right"><span
+			<li><a href="./info.html" target="right"><span
 					class="icon-caret-right"></span>会员信息</a></li>
+		</ul>
+		<h2>
+			<span class="icon-pencil-square-o"></span>点餐
+		</h2>
+		<ul>
+			<li><a href="./info.html" target="right"><span
+					class="icon-caret-right"></span>点餐</a></li>
 		</ul>
 	</div>
 
 	<div class="rightContent">
 		<ul class="bread">
 			<!-- {:U('Index/info')} -->
-			<li><a href="info.html" target="right" class="icon-home">
+			<li><a href="./info.html" target="right" class="icon-home">
 					首页</a></li>
 			<li><a href="" id="a_leader_txt">网站信息</a></li>
 		</ul>
 		<div class="admin">
-			<iframe scrolling="auto" rameborder="0" src="info.html"
+			<iframe scrolling="auto" rameborder="0" src="./info.html"
 				name="right" width="100%" height="100%"></iframe>
 		</div>
 	</div>

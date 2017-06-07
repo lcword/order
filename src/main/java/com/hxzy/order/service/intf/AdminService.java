@@ -7,8 +7,6 @@ import com.hxzy.order.model.Admin;
 import com.hxzy.order.page.Page;
 
 public interface AdminService {
-	void add(Admin admin);
-
 	void delete(String ids);
 
 	void update(Admin admin);

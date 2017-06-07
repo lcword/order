@@ -1,5 +1,7 @@
 package com.hxzy.order.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +17,8 @@ import com.hxzy.order.service.intf.AdminService;
 public class AdminServiceImpl implements AdminService{
 	@Autowired
 	private AdminDao adminDao;
+	private SimpleDateFormat dateFormate = new SimpleDateFormat("yyyyMMdd");
 	
-	@Override
-	public void add(Admin admin) {
-		adminDao.add(admin);
-	}
-
 	@Override
 	public void delete(String ids) {
 		adminDao.delete(ids);		
@@ -28,7 +26,22 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public void update(Admin admin) {
-		adminDao.update(admin);
+		if(admin.getId() == null || admin.getId().isEmpty()){
+			/*增加*/
+			String date = dateFormate.format(new Date());
+			int count = adminDao.dayCount(date);
+			if(++count < 100){
+				date += "0";
+			}
+			if(count < 10){
+				date += "0";
+			}
+			admin.setId(date + String.valueOf(count));
+			adminDao.add(admin);
+		}else{
+			/*修改*/
+			adminDao.update(admin);
+		}
 	}
 
 	@Override
@@ -61,4 +74,5 @@ public class AdminServiceImpl implements AdminService{
 		admin.setLoginCount(admin.getLoginCount() + 1);
 		update(admin);
 	}
+
 }

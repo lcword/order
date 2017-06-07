@@ -18,7 +18,8 @@ public class LoginController {
 
 	@RequestMapping("/login")
 	public String login(Admin admin,HttpServletRequest request,HttpServletResponse response) {
-		if (adminService.exist(admin) != null) {
+		Admin loginer;
+		if ((loginer = adminService.exist(admin)) != null) {
 			request.getSession().setAttribute("login_user", admin.getUsername());
 			Cookie usernameCookie = new Cookie("login_username", admin.getUsername());
 			Cookie passwordCookie = new Cookie("login_password", admin.getPassword());
@@ -26,6 +27,7 @@ public class LoginController {
 			passwordCookie.setMaxAge(60 * 60);
 			response.addCookie(usernameCookie);
 			response.addCookie(passwordCookie);
+			adminService.loginRecord(loginer);
 			return "redirect:index";
 		} else {
 			Cookie[] cookies = request.getCookies();
@@ -43,8 +45,9 @@ public class LoginController {
 			}
 
 			admin = new Admin(login_username, login_password);
-			if (adminService.exist(admin) != null) {
+			if ((loginer = adminService.exist(admin)) != null) {
 				request.getSession().setAttribute("login_user", login_username);
+				adminService.loginRecord(loginer);
 				return "redirect:index";
 			}
 		}

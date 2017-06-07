@@ -27,7 +27,7 @@ public class AdminDaoImplTest {
 	@Test
 	public void testAdd() {
 		Admin admin = new Admin("zs","123");
-		adminService.add(admin);
+		adminService.update(admin);
 	}
 
 	@Test

@@ -58,7 +58,7 @@
 </script>
 </head>
 <body>
-	<form action="update_admin" method="post" id="admin_form" enctype="multipart/form-data">
+	<form action="update_admin" method="post" id="admin_form">
 		<table>
 			<input type="hidden" name="id" value="${admin.id }" />
 			<tr>
@@ -75,12 +75,12 @@
 			</tr>
 			<tr>
 				<td>角色</td>
-				<td><input name="role_id" value="${admin.role.}" />
+				<td>
 					<select>
 						<option value="${admin.role.id}">${admin.role.name}</option>
-						<c:forEach items="role_list" var="role">
+						<%-- <c:forEach items="role_list" var="role">
 							<option value="${role.id }">${role.name}</option>
-						</c:forEach>
+						</c:forEach> --%>
 					</select>
 				</td>
 			</tr>

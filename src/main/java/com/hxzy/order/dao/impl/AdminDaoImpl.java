@@ -5,7 +5,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import org.springframework.orm.hibernate4.HibernateCallback;
+import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
 import com.hxzy.order.dao.intf.AdminDao;
@@ -88,7 +88,7 @@ public class AdminDaoImpl extends MyHibernateDaoSupport implements AdminDao {
 	@Override
 	public Admin exist(Admin Admin) {
 		String hql = "FROM Admin WHERE username =:username AND password =:password";
-		Admin loginer = getHibernateTemplate().execute(new HibernateCallback<Admin>() {
+		return getHibernateTemplate().execute(new HibernateCallback<Admin>() {
 			@Override
 			public Admin doInHibernate(Session session) throws HibernateException {
 				Query<Admin> query = session.createQuery(hql, Admin.class);
@@ -98,7 +98,6 @@ public class AdminDaoImpl extends MyHibernateDaoSupport implements AdminDao {
 				return Admin;
 			}
 		});
-		return loginer;
 	}
 
 	@Override
@@ -113,6 +112,20 @@ public class AdminDaoImpl extends MyHibernateDaoSupport implements AdminDao {
 			}
 		});
 		return register != null ? true : false;
+	}
+
+	@Override
+	public int dayCount(String date) {
+		return getHibernateTemplate().execute(new HibernateCallback<Integer>() {
+			@Override
+			public Integer doInHibernate(Session session) throws HibernateException {
+				String hql = "SELECT count(*) FROM Admin WHERE id like '%" + date + "%'";
+				@SuppressWarnings("rawtypes")
+				Query query = session.createQuery(hql);
+				long count = (long)query.uniqueResult();
+				return (int)count;
+			}
+		});
 	}
 
 }
