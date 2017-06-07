@@ -20,7 +20,7 @@ public class LoginController {
 	public String login(Admin admin,HttpServletRequest request,HttpServletResponse response) {
 		Admin loginer;
 		if ((loginer = adminService.exist(admin)) != null) {
-			request.getSession().setAttribute("login_user", admin.getUsername());
+			request.getSession().setAttribute("login_user", admin.getId());
 			Cookie usernameCookie = new Cookie("login_username", admin.getUsername());
 			Cookie passwordCookie = new Cookie("login_password", admin.getPassword());
 			usernameCookie.setMaxAge(60 * 60);

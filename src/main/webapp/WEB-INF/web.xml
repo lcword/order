@@ -21,6 +21,19 @@
 		<filter-name>LoginFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<filter>
+		<filter-name>JurisdictionFilter</filter-name>
+		<filter-class>com.hxzy.order.filter.JurisdictionFilter</filter-class>
+		<init-param>
+			<param-name>noURI</param-name>
+			<param-value>css;js;login;login.jsp;jpg;png</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>JurisdictionFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 	<!-- springmvc -->
 	<servlet>

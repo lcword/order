@@ -3,22 +3,22 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-6-7 14:06:03 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="com.hxzy.order.model.Role" table="t_role">
+    <class name="com.hxzy.order.model.Module" table="t_module">
         <id name="id" type="java.lang.String">
-            <column name="r_id" />
+            <column name="m_id" />
             <generator class="assigned" />
         </id>
         <property name="name" type="java.lang.String">
-            <column name="r_name" />
+            <column name="m_name" />
         </property>
         <property name="remark" type="java.lang.String">
-            <column name="r_remark" />
+            <column name="m_remark" />
         </property>
-        <set name="set" table="t_role_function" inverse="false" lazy="true">
+        <set name="set" table="t_function" inverse="false" lazy="true">
             <key>
-                <column name="r_id" />
+                <column name="m_id" />
             </key>
-            <many-to-many class="com.hxzy.order.model.Function" column="f_id"/>
+            <one-to-many class="com.hxzy.order.model.Function"/>
         </set>
     </class>
 </hibernate-mapping>

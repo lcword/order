@@ -36,7 +36,7 @@ public class AdminServiceImpl implements AdminService{
 			if(count < 10){
 				date += "0";
 			}
-			admin.setId(date + String.valueOf(count));
+			admin.setId("A" + date + String.valueOf(count));
 			adminDao.add(admin);
 		}else{
 			/*修改*/

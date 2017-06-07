@@ -2,19 +2,19 @@ package com.hxzy.order.model;
 
 import java.util.Set;
 
-public class Role {
+public class Module {
 	private String id;
-	private String name;//角色名
-	private String remark;//备注
-	private Set<Function> set;//该角色具有的功能
-	public Role(String id, String name, String remark, Set<Function> set) {
+	private String name;//模块名称
+	private String remark;//描述
+	private Set<Function> set;//该模块具有的功能
+	public Module(String id, String name, String remark, Set<Function> set) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.remark = remark;
 		this.set = set;
 	}
-	public Role() {
+	public Module() {
 		super();
 	}
 	public String getId() {
@@ -43,6 +43,6 @@ public class Role {
 	}
 	@Override
 	public String toString() {
-		return "Role [id=" + id + ", name=" + name + ", remark=" + remark + ", set=" + set + "]";
+		return "Module [id=" + id + ", name=" + name + ", remark=" + remark + ", set=" + set + "]";
 	}
 }

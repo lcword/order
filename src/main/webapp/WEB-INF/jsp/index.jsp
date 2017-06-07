@@ -55,6 +55,15 @@
 					class="icon-caret-right"></span>添加操作员</a></li>
 		</ul>
 		<h2>
+			<span class="icon-user"></span>角色管理
+		</h2>
+		<ul style="display: block">
+			<li><a href="query_role" target="right"><span
+					class="icon-caret-right"></span>角色信息</a></li>
+			<li><a href="pre_add_role" target="right"><span
+					class="icon-caret-right"></span>添加角色</a></li>
+		</ul>
+		<h2>
 			<span class="icon-pencil-square-o"></span>会员管理
 		</h2>
 		<ul>

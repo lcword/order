@@ -42,6 +42,8 @@
 			<list>
 				<value>com\hxzy\order\model\Admin.hbm.xml</value>
 				<value>com\hxzy\order\model\Role.hbm.xml</value>
+				<value>com\hxzy\order\model\Function.hbm.xml</value>
+				<value>com\hxzy\order\model\Module.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

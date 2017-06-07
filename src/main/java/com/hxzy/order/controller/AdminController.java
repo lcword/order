@@ -28,8 +28,6 @@ public class AdminController {
 
 	@RequestMapping("update_admin")
 	public String update(Admin admin) {
-		System.out.println("update >>>");
-		System.out.println(admin);
 		adminService.update(admin);
 		return "redirect:query_admin";
 	}
