@@ -39,11 +39,7 @@ public class ModuleServiceImpl implements ModuleService{
 			moduleDao.add(module);
 		}else{
 			/*修改*/
-			Module oldModule = moduleDao.queryById(module.getId());
-			oldModule.setName(module.getName());
-			oldModule.setRemark(module.getRemark());
-			oldModule.setSet(module.getSet());
-			moduleDao.update(oldModule);
+			moduleDao.update(module);
 		}
 	}
 

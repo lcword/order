@@ -25,8 +25,8 @@
 				remark:"required"
 			},
 			messages:{
-				name:"用户名不能为空!",
-				remark:"密码不能为空!"
+				name:"名称不能为空!",
+				remark:"描述不能为空!"
 			}
 			
 		});

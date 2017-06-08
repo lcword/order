@@ -123,7 +123,7 @@
 				<td>${function.id }</td>
 				<td>${function.code }</td>
 				<td>${function.remark }</td>
-				<td>${function.module }</td>
+				<td>${function.module.name }</td> 
 				<td><a href="delete_function?id=${function.id }" onclick="deleteAdmin(${function.id });">删除</a></td>
 				<td><a href="pre_update_function?id=${function.id }">修改</a></td>
 			</tr>

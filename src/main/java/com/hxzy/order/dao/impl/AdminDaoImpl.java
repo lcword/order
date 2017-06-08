@@ -74,15 +74,16 @@ public class AdminDaoImpl extends MyHibernateDaoSupport implements AdminDao {
 
 	@Override
 	public Admin queryById(String id) {
-		return getHibernateTemplate().execute(new HibernateCallback<Admin>() {
-			@Override
-			public Admin doInHibernate(Session session) throws HibernateException {
-				String hql = "FROM Admin WHERE id =:id";
-				Query<Admin> query = session.createQuery(hql, Admin.class);
-				query.setParameter("id", id);
-				return query.uniqueResult();
-			}
-		});
+		return getHibernateTemplate().get(Admin.class, id);
+//		return getHibernateTemplate().execute(new HibernateCallback<Admin>() {
+//			@Override
+//			public Admin doInHibernate(Session session) throws HibernateException {
+//				String hql = "FROM Admin WHERE id =:id";
+//				Query<Admin> query = session.createQuery(hql, Admin.class);
+//				query.setParameter("id", id);
+//				return query.uniqueResult();
+//			}
+//		});
 	}
 
 	@Override

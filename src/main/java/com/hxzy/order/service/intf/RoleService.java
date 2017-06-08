@@ -8,7 +8,7 @@ import com.hxzy.order.page.Page;
 public interface RoleService {
 	void delete(String ids);
 
-	void update(Role role);
+	void update(Role role,String functionId);
 
 	List<Role> query(Page page);
 

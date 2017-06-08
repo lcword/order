@@ -148,4 +148,50 @@
 
 	</dependencies>
 
+
+	<build>
+		<finalName>java1608</finalName>
+		<plugins>
+			<!-- <plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<path>/test</path>
+					<port>8080</port>
+					<uriEncoding>UTF-8</uriEncoding>
+					<server>tomcat7</server>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin> -->
+
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.4.5.v20170502</version>
+				<configuration>
+					<scanIntervalSeconds>2</scanIntervalSeconds>
+					<webApp>
+						<contextPath>/test</contextPath>
+						<war>java1608-test-v1.0</war>
+					</webApp>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

@@ -14,9 +14,9 @@
         <property name="remark" type="java.lang.String">
             <column name="m_remark" />
         </property>
-        <set name="set" table="t_function" inverse="false" lazy="true">
+        <set name="set" table="t_function" inverse="false" lazy="false">
             <key>
-                <column name="m_id" />
+                <column name="f_m_id" />
             </key>
             <one-to-many class="com.hxzy.order.model.Function"/>
         </set>

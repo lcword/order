@@ -22,11 +22,11 @@
 				name:{
 					required:true,
 				},
-				remark:"required"
+				functionId:"required"
 			},
 			messages:{
-				name:"用户名不能为空!",
-				remark:"密码不能为空!"
+				name:"角色名称不能为空!",
+				functionId:"请选择至少一个功能"
 			}
 			
 		});
@@ -44,6 +44,23 @@
 			<tr>
 				<td>描述</td>
 				<td><input id="remark" name="remark" value="${role.remark}" /></td>
+			</tr>
+			<tr>
+				<td>功能</td>
+				<td>
+					<c:forEach items="${function_list}" var="function">
+						<c:set var="flag" value="1"></c:set>
+						<c:forEach items="${role.set}" var="r_function">
+							<c:if test="${function.id == r_function.id}">
+								<input type="checkbox" value="${function.id}" checked="checked" name="functionId">${function.code}</input>
+								<c:set var="flag" value="0"></c:set>
+							</c:if>
+						</c:forEach>
+						<c:if test="${flag == 1}">
+							<input type="checkbox" value="${function.id}" name="functionId">${function.code}</input>
+						</c:if>
+					</c:forEach>
+				</td>
 			</tr>
 		</table>
 		<input type="submit" value="确定" />

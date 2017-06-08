@@ -14,7 +14,7 @@
         <property name="remark" type="java.lang.String">
             <column name="r_remark" />
         </property>
-        <set name="set" table="t_role_function" inverse="false" lazy="true">
+        <set name="set" table="t_role_function" inverse="false" lazy="false">
             <key>
                 <column name="r_id" />
             </key>

@@ -9,6 +9,7 @@ import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
 import com.hxzy.order.dao.intf.FunctionDao;
+import com.hxzy.order.model.Admin;
 import com.hxzy.order.model.Function;
 import com.hxzy.order.page.Page;
 import com.hxzy.order.util.MyHibernateDaoSupport;
@@ -59,15 +60,16 @@ public class FunctionDaoImpl extends MyHibernateDaoSupport implements FunctionDa
 
 	@Override
 	public Function queryById(String id) {
-		return getHibernateTemplate().execute(new HibernateCallback<Function>() {
-			@Override
-			public Function doInHibernate(Session session) throws HibernateException {
-				String hql = "FROM Function WHERE id =:id";
-				Query<Function> query = session.createQuery(hql, Function.class);
-				query.setParameter("id", id);
-				return query.uniqueResult();
-			}
-		});
+		return getHibernateTemplate().get(Function.class, id);
+//		return getHibernateTemplate().execute(new HibernateCallback<Function>() {
+//			@Override
+//			public Function doInHibernate(Session session) throws HibernateException {
+//				String hql = "FROM Function WHERE id =:id";
+//				Query<Function> query = session.createQuery(hql, Function.class);
+//				query.setParameter("id", id);
+//				return query.uniqueResult();
+//			}
+//		});
 	}
 
 	@Override

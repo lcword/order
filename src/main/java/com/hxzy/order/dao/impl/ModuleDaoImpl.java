@@ -59,15 +59,17 @@ public class ModuleDaoImpl extends MyHibernateDaoSupport implements ModuleDao{
 	
 	@Override
 	public Module queryById(String id) {
-		return getHibernateTemplate().execute(new HibernateCallback<Module>() {
-			@Override
-			public Module doInHibernate(Session session) throws HibernateException {
-				String hql = "FROM Module WHERE id =:id";
-				Query<Module> query = session.createQuery(hql, Module.class);
-				query.setParameter("id", id);
-				return query.uniqueResult();
-			}
-		});
+		return getHibernateTemplate().get(Module.class, id);
+		
+//		return getHibernateTemplate().execute(new HibernateCallback<Module>() {
+//			@Override
+//			public Module doInHibernate(Session session) throws HibernateException {
+//				String hql = "FROM Module WHERE id =:id";
+//				Query<Module> query = session.createQuery(hql, Module.class);
+//				query.setParameter("id", id);
+//				return query.uniqueResult();
+//			}
+//		});
 	}
 
 	@Override

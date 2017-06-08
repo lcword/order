@@ -22,11 +22,11 @@
 				code:{
 					required:true,
 				},
-				remark:"required"
+				module_id:"required"
 			},
 			messages:{
-				code:"用户名不能为空!",
-				remark:"密码不能为空!"
+				code:"代码块不能为空!",
+				module_id:"必须选择一个模块"
 			}
 			
 		});
@@ -48,11 +48,11 @@
 			<tr>
 				<td>模块</td>
 				<td>
-					<select>
+					<select name="module_id">
 						<option value="${function.module.id}">${function.module.name}</option>
-						<%-- <c:forEach items="module_list" var="module">
-							<option value="${module.id }">${module.name}</option>
-						</c:forEach> --%>
+						<c:forEach items="${module_list}" var="module">
+							<option value="${module.id}">${module.name}</option>
+						</c:forEach>
 					</select>
 				</td>
 			</tr>

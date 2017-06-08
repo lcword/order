@@ -20,7 +20,7 @@
         <property name="loginCount" type="int">
             <column name="a_login_count" />
         </property>
-        <many-to-one name="role" class="com.hxzy.order.model.Role" fetch="join">
+        <many-to-one name="role" class="com.hxzy.order.model.Role" fetch="join" lazy="false">
             <column name="a_r_id" />
         </many-to-one>
     </class>

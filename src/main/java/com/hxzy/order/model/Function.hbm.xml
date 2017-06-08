@@ -14,10 +14,10 @@
         <property name="remark" type="java.lang.String">
             <column name="f_remark" />
         </property>
-        <many-to-one name="module" class="com.hxzy.order.model.Module" fetch="join">
+        <many-to-one name="module" class="com.hxzy.order.model.Module" lazy="false" >
             <column name="f_m_id" />
         </many-to-one>
-        <set name="set" table="t_role_function" inverse="false" lazy="true">
+        <set name="set" table="t_role_function" inverse="false" lazy="false" >
             <key>
                 <column name="f_id" />
             </key>
