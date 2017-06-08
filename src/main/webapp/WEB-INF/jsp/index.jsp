@@ -64,6 +64,24 @@
 					class="icon-caret-right"></span>添加角色</a></li>
 		</ul>
 		<h2>
+			<span class="icon-user"></span>功能管理
+		</h2>
+		<ul style="display: block">
+			<li><a href="query_function" target="right"><span
+					class="icon-caret-right"></span>功能信息</a></li>
+			<li><a href="pre_add_function" target="right"><span
+					class="icon-caret-right"></span>添加功能</a></li>
+		</ul>
+		<h2>
+			<span class="icon-user"></span>模块管理
+		</h2>
+		<ul style="display: block">
+			<li><a href="query_module" target="right"><span
+					class="icon-caret-right"></span>模块信息</a></li>
+			<li><a href="pre_add_module" target="right"><span
+					class="icon-caret-right"></span>添加模块</a></li>
+		</ul>
+		<h2>
 			<span class="icon-pencil-square-o"></span>会员管理
 		</h2>
 		<ul>

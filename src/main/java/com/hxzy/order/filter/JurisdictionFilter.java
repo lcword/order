@@ -18,11 +18,11 @@ import org.springframework.stereotype.Component;
 
 import com.hxzy.order.model.Function;
 import com.hxzy.order.service.intf.AdminService;
+import com.hxzy.order.util.GetEntity;
 
 
-@Component
-public class JurisdictionFilter implements Filter,ApplicationContextAware{
-	private AdminService adminService;
+public class JurisdictionFilter implements Filter{
+	private AdminService adminService = GetEntity.getEntity("adminService");
 	private String noURI;
 	
 	@Override
@@ -46,19 +46,18 @@ public class JurisdictionFilter implements Filter,ApplicationContextAware{
 		
 		//权限管理
 		String id = req.getSession().getAttribute("login_user").toString();
-		System.out.println("adminService" + adminService);
-		if(id != null && !id.isEmpty()){
-			String url = req.getRequestURL().toString();
-			Set<Function> set = adminService.queryById(id).getRole().getSet();
-			for (Function function : set) {
-				if(url.endsWith(function.getCode())){
+//		if(id != null && !id.isEmpty()){
+//			String url = req.getRequestURL().toString();
+//			Set<Function> set = adminService.queryById(id).getRole().getSet();
+//			for (Function function : set) {
+//				if(url.endsWith(function.getCode())){
 					chain.doFilter(request, response);
-					return;
-				}
-			}
-		}else{
-			chain.doFilter(request, response);
-		}
+//					return;
+//				}
+//			}
+//		}else{
+//			chain.doFilter(request, response);
+//		}
 	}
 
 	@Override
@@ -66,9 +65,4 @@ public class JurisdictionFilter implements Filter,ApplicationContextAware{
 		noURI = fConfig.getInitParameter("noURI");
 	}
 
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		adminService = (AdminService) applicationContext.getBean("adminService");
-	}
-	
 }

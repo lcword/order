@@ -16,25 +16,25 @@ public class RoleController {
 	
 	@RequestMapping("pre_add_role")
 	public String pre_add() {
-		return "update_Role";
+		return "update_role";
 	}
 
 	@RequestMapping("pre_update_role")
 	public String pre_update(Role role,Map<String,Role> map) {
 		map.put("role", roleService.queryById(role.getId()));
-		return "update_Role";
+		return "update_role";
 	}
 
-	@RequestMapping("update_Role")
+	@RequestMapping("update_role")
 	public String update(Role role) {
 		roleService.update(role);
-		return "redirect:query_Role";
+		return "redirect:query_role";
 	}
 
-	@RequestMapping("delete_Role")
+	@RequestMapping("delete_role")
 	public String delete(String id) {
 		roleService.delete(id);
-		return "redirect:query_Role";
+		return "redirect:query_role";
 	}
 
 }

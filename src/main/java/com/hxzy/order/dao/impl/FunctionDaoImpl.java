@@ -62,7 +62,7 @@ public class FunctionDaoImpl extends MyHibernateDaoSupport implements FunctionDa
 		return getHibernateTemplate().execute(new HibernateCallback<Function>() {
 			@Override
 			public Function doInHibernate(Session session) throws HibernateException {
-				String hql = "FROM Role WHERE id =:id";
+				String hql = "FROM Function WHERE id =:id";
 				Query<Function> query = session.createQuery(hql, Function.class);
 				query.setParameter("id", id);
 				return query.uniqueResult();

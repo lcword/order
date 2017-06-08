@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>更新用户信息</title>
+<title>更新操作员信息</title>
 <style type="text/css">
 	.error,span {
 		color:red;
