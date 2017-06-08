@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hxzy.order.dao.intf.AdminDao;
+import com.hxzy.order.dao.intf.RoleDao;
 import com.hxzy.order.dto.AdminDto;
 import com.hxzy.order.model.Admin;
 import com.hxzy.order.page.Page;
@@ -17,6 +18,8 @@ import com.hxzy.order.service.intf.AdminService;
 public class AdminServiceImpl implements AdminService{
 	@Autowired
 	private AdminDao adminDao;
+	@Autowired
+	private RoleDao roleDao;
 	private SimpleDateFormat dateFormate = new SimpleDateFormat("yyyyMMdd");
 	
 	@Override
@@ -25,7 +28,9 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public void update(Admin admin) {
+	public void update(Admin admin,String roleId) {
+		admin.setRole(roleDao.queryById(roleId));
+		
 		if(admin.getId() == null || admin.getId().isEmpty()){
 			/*增加*/
 			String date = dateFormate.format(new Date());
@@ -72,7 +77,7 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public void loginRecord(Admin admin) {
 		admin.setLoginCount(admin.getLoginCount() + 1);
-		update(admin);
+		adminDao.update(admin);
 	}
 
 }

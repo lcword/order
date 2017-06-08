@@ -9,7 +9,7 @@ import com.hxzy.order.page.Page;
 public interface AdminService {
 	void delete(String ids);
 
-	void update(Admin admin);
+	void update(Admin admin,String roleId);
 
 	List<Admin> query(Page<AdminDto> page);
 

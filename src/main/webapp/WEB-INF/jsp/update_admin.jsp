@@ -23,19 +23,12 @@
 					required:true,
 				},
 				password:"required",
-				age:{
-					required:true,
-					digits:true,
-					range:[0,100]
-				},
+				roleId:"required"
 			},
 			messages:{
 				username:"用户名不能为空!",
 				password:"密码不能为空!",
-				age:{
-					required:"年龄不能为空!",
-					digits:"年龄只能是数字!"
-				},
+				roleId:"请设定角色!"
 			}
 			
 		});
@@ -76,11 +69,11 @@
 			<tr>
 				<td>角色</td>
 				<td>
-					<select>
+					<select name="roleId">
 						<option value="${admin.role.id}">${admin.role.name}</option>
-						<%-- <c:forEach items="role_list" var="role">
+						<c:forEach items="${role_list }" var="role">
 							<option value="${role.id }">${role.name}</option>
-						</c:forEach> --%>
+						</c:forEach>
 					</select>
 				</td>
 			</tr>

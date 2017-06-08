@@ -46,7 +46,7 @@ public class LoginController {
 
 			admin = new Admin(login_username, login_password);
 			if ((loginer = adminService.exist(admin)) != null) {
-				request.getSession().setAttribute("login_user", login_username);
+				request.getSession().setAttribute("login_user", loginer.getId());
 				adminService.loginRecord(loginer);
 				return "redirect:index";
 			}
