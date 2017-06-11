@@ -14,7 +14,7 @@
 		<filter-class>com.hxzy.order.filter.LoginFilter</filter-class>
 		<init-param>
 			<param-name>noURI</param-name>
-			<param-value>css;js;login;login.jsp;jpg;png</param-value>
+			<param-value>css;js;login;login.jsp;jpg;png;logout;html</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

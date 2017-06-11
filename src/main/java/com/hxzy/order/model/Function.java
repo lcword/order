@@ -51,7 +51,7 @@ public class Function {
 	}
 	@Override
 	public String toString() {
-		return "Function [id=" + id + ", code=" + code + ", remark=" + remark + ", module="  + ", set=" + set
+		return "Function [id=" + id + ", code=" + code + ", remark=" + remark + ", module=" + module.getName()  + ", set=" + set
 				+ "]";
 	}
 }

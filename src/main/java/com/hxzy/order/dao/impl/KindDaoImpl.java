@@ -8,26 +8,24 @@ import org.hibernate.query.Query;
 import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
-import com.hxzy.order.dao.intf.RoleDao;
-import com.hxzy.order.model.Admin;
-import com.hxzy.order.model.Function;
-import com.hxzy.order.model.Role;
+import com.hxzy.order.dao.intf.KindDao;
+import com.hxzy.order.model.Kind;
 import com.hxzy.order.page.Page;
 import com.hxzy.order.util.MyHibernateDaoSupport;
 
-@Repository("roleDao")
-public class RoleDaoImpl extends MyHibernateDaoSupport implements RoleDao{
+@Repository("kindDao")
+public class KindDaoImpl extends MyHibernateDaoSupport implements KindDao{
 
 	@Override
-	public void add(Role role) {
-		getHibernateTemplate().save(role);
+	public void add(Kind kind) {
+		getHibernateTemplate().save(kind);
 	}
 
 	@Override
 	public void delete(String idStr) {
 		String[] ids = idStr.split(",");
 
-		final String queryString = "DELETE Role WHERE id in (:ids) ";
+		final String queryString = "DELETE Kind WHERE id in (:ids) ";
 		getHibernateTemplate().execute(new HibernateCallback<Object>() {
 			@Override
 			public Object doInHibernate(Session session) throws HibernateException {
@@ -41,17 +39,17 @@ public class RoleDaoImpl extends MyHibernateDaoSupport implements RoleDao{
 	}
 
 	@Override
-	public void update(Role role) {
-		getHibernateTemplate().update(role);
+	public void update(Kind kind) {
+		getHibernateTemplate().update(kind);
 	}
 
 	@Override
-	public List<Role> query(Page page) {
-		return getHibernateTemplate().execute(new HibernateCallback<List<Role>>() {
+	public List<Kind> query(Page page) {
+		return getHibernateTemplate().execute(new HibernateCallback<List<Kind>>() {
 			@Override
-			public List<Role> doInHibernate(Session session) throws HibernateException {
-				StringBuilder hql = new StringBuilder("FROM Role WHERE 1=1");
-				Query<Role> query = session.createQuery(hql.toString(),Role.class);
+			public List<Kind> doInHibernate(Session session) throws HibernateException {
+				StringBuilder hql = new StringBuilder("FROM Kind WHERE 1=1");
+				Query<Kind> query = session.createQuery(hql.toString(),Kind.class);
 				query.setFirstResult(page.getStartIndex());
 				query.setMaxResults(Page.MAXCOUNT);
 				return query.list();
@@ -60,8 +58,8 @@ public class RoleDaoImpl extends MyHibernateDaoSupport implements RoleDao{
 	}
 
 	@Override
-	public Role queryById(String id) {
-		return getHibernateTemplate().get(Role.class, id);
+	public Kind queryById(String id) {
+		return getHibernateTemplate().get(Kind.class, id);
 	}
 
 	@Override
@@ -69,7 +67,7 @@ public class RoleDaoImpl extends MyHibernateDaoSupport implements RoleDao{
 		return getHibernateTemplate().execute(new HibernateCallback<Integer>() {
 			@Override
 			public Integer doInHibernate(Session session) throws HibernateException {
-				String hql = "SELECT count(*) FROM Role WHERE id like '%" + date + "%'";
+				String hql = "SELECT count(*) FROM Kind WHERE id like '%" + date + "%'";
 				@SuppressWarnings("rawtypes")
 				Query query = session.createQuery(hql);
 				long count = (long)query.uniqueResult();

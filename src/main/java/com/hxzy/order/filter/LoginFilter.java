@@ -1,6 +1,8 @@
 package com.hxzy.order.filter;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.servlet.Filter;
@@ -11,70 +13,82 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.hxzy.order.model.Admin;
 import com.hxzy.order.model.Function;
+import com.hxzy.order.model.Role;
 import com.hxzy.order.service.intf.AdminService;
 import com.hxzy.order.util.GetEntity;
-/*懒加载可以解决问题，但是会引发lazyInitalizationException*/
+
 public class LoginFilter implements Filter {
-	private String noURI;
 	private AdminService adminService = GetEntity.getEntity("adminService");
+	private String[] nouriArray;
 
-	@Override
-	public void destroy() {
-
+	public void init(FilterConfig config) {
+		String nouriStr = config.getInitParameter("noURI");
+		nouriArray = nouriStr.split(";");
 	}
 
-	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		System.out.println("filter >>>");
 		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse resp = (HttpServletResponse) response;
 		Object user = req.getSession().getAttribute("login_user");
-		String url = req.getRequestURI();
-		System.out.println("url: " + url);
-		if (noURI != null && !"".equals(noURI)) {
-			String[] noURIArray = noURI.split(";");
-			for (String string : noURIArray) {
-				if (url.endsWith(string)) {
-					chain.doFilter(request, response);
-					return;
-				}
+		String uri = req.getRequestURI();
+		System.out.println("uri: "+uri);
+//		System.out.println("nonProtectedUris: ");
+//		Set<Entry<String, String>> set = nonProtectedUris.entrySet();
+//		Iterator<Entry<String, String>> itor = set.iterator();
+//		while(itor.hasNext()){
+//			Entry<String, String> entry = itor.next();
+//			System.out.println("key: "+entry.getKey()+"  value: "+entry.getValue() );
+//		}
+		System.out.println("不过滤： "+Arrays.toString(nouriArray));
+		boolean flag = true;
+		for (String nouri : nouriArray) {
+			System.out.println(uri+"="+nouri+": " + uri.endsWith(nouri));
+			if(uri.endsWith(nouri)){
+				flag = false;
+				break;
 			}
 		}
-		if (user != null && jurisdiction(req, chain, user, url)) {
-			chain.doFilter(request, response);
-		} else {
-			HttpServletResponse resp = (HttpServletResponse) response;
-			resp.sendRedirect("login");
-		}
-	}
-
-	@Override
-	public void init(FilterConfig fConfig) throws ServletException {
-		noURI = fConfig.getInitParameter("noURI");
-	}
-
-	private boolean jurisdiction(HttpServletRequest req, FilterChain chain, Object loginer,String url) {
-		System.out.println(2222);
-		// 权限管理
-		if(loginer != null){
-			System.out.println(3333);
-			String id = loginer.toString();
-			System.out.println("login_user_id: " + id);
-			if (id != null && !id.isEmpty()) {
-				System.out.println(4444);
-				System.out.println("adminService: " + adminService);
-				System.out.println("adminService.queryById(id): " + adminService.queryById(id));
-				System.out.println("adminService.queryById(id).getRole(): " + adminService.queryById(id).getRole());
-				Set<Function> set = adminService.queryById(id).getRole().getSet();
-				for (Function function : set) {
-					System.out.println(function.getCode());
-					if (url.endsWith(function.getCode())) {
-						return true;
-					}
-				}
+		if(flag){
+			System.out.println("需要认证  >>>");
+			if (user == null) {
+				System.out.println("user 为空");
+				resp.sendRedirect("login");
+				return;
 			}
+			if (!getPermission(req, user, uri)) {
+				System.out.println("权限不足");
+				resp.sendRedirect("login");
+				return;
+			}
+		}
+		System.out.println("filter >>> 放行");
+		chain.doFilter(request, response);
+	}
+
+	public void destroy() {
+	}
+
+	private boolean getPermission(HttpServletRequest request, Object user, String uri) {
+		String loginerId = user.toString();
+		Admin admin = adminService.queryById(loginerId);
+		Role role = admin.getRole();
+		Set<Function> set = role.getSet();
+		Iterator<Function> itor = set.iterator();
+		while (itor.hasNext()) {
+			Function function = itor.next();
+			System.out.println("代码： "+function.getCode());
+			if (uri.endsWith(function.getCode())) {
+				return true;
+			} 
 		}
 		return false;
+//		return true;
 	}
+
 }

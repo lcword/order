@@ -2,11 +2,11 @@ package com.hxzy.order.model;
 
 public class Admin {
 	private String id;
-	private String name;//操作员姓名
-	private String username;//用户名
-	private String password;//密码
-	private int loginCount;//登陆次数
-	private Role role;//角色
+	private String name;//鎿嶄綔鍛樺鍚�
+	private String username;//鐢ㄦ埛鍚�
+	private String password;//瀵嗙爜
+	private int loginCount;//鐧婚檰娆℃暟
+	private Role role;//瑙掕壊
 	public Admin(String name, String username, String password, int loginCount, Role role) {
 		super();
 		this.name = name;
@@ -62,6 +62,6 @@ public class Admin {
 	@Override
 	public String toString() {
 		return "Admin [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password
-				+ ", loginCount=" + loginCount + ", role=" + role + "]";
+				+ ", loginCount=" + loginCount + ", role=" + role.getName() + "]";
 	}
 }

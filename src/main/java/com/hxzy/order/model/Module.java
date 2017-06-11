@@ -43,6 +43,6 @@ public class Module {
 	}
 	@Override
 	public String toString() {
-		return "";//"Module [id=" + id + ", name=" + name + ", remark=" + remark + ", set="  + "]";
+		return "Module [id=" + id + ", name=" + name + ", remark=" + remark + "]";
 	}
 }

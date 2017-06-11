@@ -44,13 +44,15 @@
 				<value>com\hxzy\order\model\Role.hbm.xml</value>
 				<value>com\hxzy\order\model\Function.hbm.xml</value>
 				<value>com\hxzy\order\model\Module.hbm.xml</value>
+				<value>com\hxzy\order\model\Dish.hbm.xml</value>
+				<value>com\hxzy\order\model\Kind.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop>
+				<!-- <prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop> -->
 			</props>
 		</property>
 	</bean>

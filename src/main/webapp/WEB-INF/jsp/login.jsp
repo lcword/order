@@ -28,7 +28,7 @@
             </div>         
             <form action="<%=request.getContextPath()%>/login" method="post">
             <div class="panel loginbox">
-                <div class="text-center margin-big padding-big-top"><h1>用户管理中心</h1></div>
+                <div class="text-center margin-big padding-big-top"><h1>智能云点餐</h1></div>
                 <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
                     <div class="form-group">
                         <div class="field field-icon-right">
