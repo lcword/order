@@ -59,6 +59,7 @@
 						<c:if test="${flag == 1}">
 							<input type="checkbox" value="${function.id}" name="functionId">${function.code}</input>
 						</c:if>
+						<br/>
 					</c:forEach>
 				</td>
 			</tr>

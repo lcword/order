@@ -54,11 +54,11 @@ public class LoginFilter implements Filter {
 				resp.sendRedirect("login");
 				return;
 			}
-//			if (!getPermission(req, user, uri)) {
-//				System.out.println("权限不足");
-//				resp.sendRedirect("login");
-//				return;
-//			}
+			if (!getPermission(req, user, uri)) {
+				System.out.println("权限不足");
+				resp.sendRedirect("login");
+				return;
+			}
 		}
 		System.out.println("filter >>> 放行");
 		chain.doFilter(request, response);

@@ -62,7 +62,7 @@
 				<td>用户名</td>
 				<td><input id="username" name="username" value="${admin.username}" /></td>
 			</tr>
-			<tr>
+			<tr> 
 				<td>密码</td>
 				<td><input type="password" name="password" value="${admin.password}" /></td>
 			</tr>

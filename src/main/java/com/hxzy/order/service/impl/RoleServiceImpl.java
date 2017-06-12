@@ -56,7 +56,13 @@ public class RoleServiceImpl implements RoleService{
 			roleDao.add(role);
 		}else{
 			/*修改*/
-			roleDao.update(role);
+			Role oldRole = roleDao.queryById(role.getId());
+			
+			oldRole.setName(role.getName());
+			oldRole.setRemark(role.getRemark());
+			oldRole.setSet(role.getSet());
+			
+			roleDao.update(oldRole);
 		}
 	}
 

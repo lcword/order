@@ -46,7 +46,7 @@
 			<strong><span class="icon-list"></span>菜单列表</strong>
 		</div>
 		<h2>
-			<span class="icon-user"></span>操作员管理
+			<span class="icon-pencil-square-o"></span>操作员管理
 		</h2>
 		<ul style="display: block">
 			<li><a href="query_admin" target="right"><span
@@ -55,7 +55,7 @@
 					class="icon-caret-right"></span>添加操作员</a></li>
 		</ul>
 		<h2>
-			<span class="icon-user"></span>角色管理
+			<span class="icon-pencil-square-o"></span>角色管理
 		</h2>
 		<ul style="display: block">
 			<li><a href="query_role" target="right"><span
@@ -64,7 +64,7 @@
 					class="icon-caret-right"></span>添加角色</a></li>
 		</ul>
 		<h2>
-			<span class="icon-user"></span>功能管理
+			<span class="icon-pencil-square-o"></span>功能管理
 		</h2>
 		<ul style="display: block">
 			<li><a href="query_function" target="right"><span
@@ -73,7 +73,7 @@
 					class="icon-caret-right"></span>添加功能</a></li>
 		</ul>
 		<h2>
-			<span class="icon-user"></span>模块管理
+			<span class="icon-pencil-square-o"></span>模块管理
 		</h2>
 		<ul style="display: block">
 			<li><a href="query_module" target="right"><span
@@ -87,9 +87,11 @@
 		<ul>
 			<li><a href="./info.html" target="right"><span
 					class="icon-caret-right"></span>会员信息</a></li>
+			<li><a href="./info.html" target="right"><span
+					class="icon-caret-right"></span>会员卡信息</a></li>
 		</ul>
 		<h2>
-			<span class="icon-pencil-square-o"></span>点餐
+			<span class="icon-user"></span>点餐
 		</h2>
 		<ul>
 			<li><a href="query_kind" target="right"><span
