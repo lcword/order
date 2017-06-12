@@ -1,5 +1,6 @@
 package com.hxzy.order.service.impl;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +29,7 @@ public class DishServiceImpl implements DishService{
 	}
 
 	@Override
-	public void update(Dish dish,String kindId) {
+	public void update(Dish dish,String kindId,String path) {
 		dish.setKind(kindDao.queryById(kindId));
 		
 		if(dish.getId() == null || dish.getId().isEmpty()){
@@ -46,6 +47,14 @@ public class DishServiceImpl implements DishService{
 		}else{
 			/*修改*/
 			Dish oldDish = dishDao.queryById(dish.getId());
+			
+			String name = null;
+			if((name = oldDish.getPicture()) != null){
+				File file = new File(path + "/" + name);
+				if(file.exists()){
+					file.delete();
+				}
+			}
 			
 			oldDish.setName(dish.getName());
 			oldDish.setPrice(dish.getPrice());

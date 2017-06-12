@@ -131,7 +131,7 @@
 					<c:if test="${dish.status == 1}">特色菜</c:if>
 					<c:if test="${dish.status != 1}">精品菜</c:if>
 				</td>
-				<td><img src="./picture/${dish.picture}" alt="待添加图片" class="picture" /></td>
+				<td><img src="./static/picture/${dish.picture}" alt="${dish.picture}" class="picture" /></td>
 				<td>${dish.remark }</td>
 				<td>${dish.kind.name }</td>
 				<td><a href="delete_dish?id=${dish.id }" onclick="deleteKind(${dish.id });">删除</a></td>

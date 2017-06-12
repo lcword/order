@@ -10,6 +10,10 @@
 	.error,span {
 		color:red;
 	}
+	.picture {
+		width:50px;
+		height:50px;
+	}
 </style>
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
@@ -42,7 +46,7 @@
 </script>
 </head>
 <body>
-	<form action="update_dish" method="post" id="dish_form">
+	<form action="update_dish" method="post" id="dish_form" enctype="multipart/form-data">
 		<table>
 			<input type="hidden" name="id" value="${dish.id }" />
 			<tr>
@@ -71,9 +75,9 @@
 				<td>图片</td>
 				<td>
 					<c:if test="${!empty dish.picture}">
-						<img src="./picture/${dish.picture}" class="picture" />
+						<img src="./static/picture/${dish.picture}" class="picture" />
 					</c:if>
-					<input type="file" name="picture" />
+					<input type="file" name="picture_name" />
 				</td>
 			</tr>
 			<tr>

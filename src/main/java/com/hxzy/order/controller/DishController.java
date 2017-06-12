@@ -1,10 +1,18 @@
 package com.hxzy.order.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.hxzy.order.model.Dish;
 import com.hxzy.order.page.Page;
@@ -31,9 +39,27 @@ public class DishController {
 		return "update_dish";
 	}
 
-	@RequestMapping("update_dish")
-	public String update(Dish dish,String kindId) {
-		dishService.update(dish,kindId);
+	@PostMapping("update_dish")
+	public String update(Dish dish,String kindId,@RequestParam("picture_name") MultipartFile picture,HttpServletRequest request) {
+		String path = request.getServletContext().getRealPath("/static/picture");
+		System.out.println(path);
+		if(picture != null && picture.getSize() > 0){
+			String name = String.valueOf(new Date().getTime()) + ".png";
+			File file = new File(path);
+			if(!file.exists()){
+				file.mkdirs();
+			}
+			File saveFile = new File(file, name);
+			try {
+				picture.transferTo(saveFile);
+				dish.setPicture(name);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		dishService.update(dish,kindId,path);
 		return "redirect:query_dish";
 	}
 
