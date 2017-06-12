@@ -1,7 +1,7 @@
 package com.hxzy.order.page;
 
 public class Page<T> {
-	public static final int MAXCOUNT = 15;//每页最大显示条数
+	public static final int MAXCOUNT = 100;//每页最大显示条数
 	private int allCount;//总记录条数
 	private int maxPage;//总页数
 	private int curPage;//当前页数

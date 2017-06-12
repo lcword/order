@@ -38,13 +38,6 @@ public class LoginFilter implements Filter {
 		Object user = req.getSession().getAttribute("login_user");
 		String uri = req.getRequestURI();
 		System.out.println("uri: "+uri);
-//		System.out.println("nonProtectedUris: ");
-//		Set<Entry<String, String>> set = nonProtectedUris.entrySet();
-//		Iterator<Entry<String, String>> itor = set.iterator();
-//		while(itor.hasNext()){
-//			Entry<String, String> entry = itor.next();
-//			System.out.println("key: "+entry.getKey()+"  value: "+entry.getValue() );
-//		}
 		System.out.println("不过滤： "+Arrays.toString(nouriArray));
 		boolean flag = true;
 		for (String nouri : nouriArray) {
@@ -61,11 +54,11 @@ public class LoginFilter implements Filter {
 				resp.sendRedirect("login");
 				return;
 			}
-			if (!getPermission(req, user, uri)) {
-				System.out.println("权限不足");
-				resp.sendRedirect("login");
-				return;
-			}
+//			if (!getPermission(req, user, uri)) {
+//				System.out.println("权限不足");
+//				resp.sendRedirect("login");
+//				return;
+//			}
 		}
 		System.out.println("filter >>> 放行");
 		chain.doFilter(request, response);
@@ -88,7 +81,6 @@ public class LoginFilter implements Filter {
 			} 
 		}
 		return false;
-//		return true;
 	}
 
 }

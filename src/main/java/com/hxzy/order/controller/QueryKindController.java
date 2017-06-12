@@ -7,22 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hxzy.order.model.Function;
+import com.hxzy.order.model.Kind;
 import com.hxzy.order.page.Page;
-import com.hxzy.order.service.intf.FunctionService;
+import com.hxzy.order.service.intf.KindService;
 
 @Controller
-public class QueryFunctionController {
+public class QueryKindController {
 	@Autowired
-	private FunctionService functionService;
-	@RequestMapping("query_function")
+	private KindService kindService;
+
+	@RequestMapping("query_kind")
 	public String query(Map<String,Object> map,String type,String curPageStr) {
 
 		Page page = new Page(1, 1);
-	
-		List<Function> functionList = functionService.query(page);
-		map.put("function_list", functionList);
-		map.put("function_page", page);
-		return "function_main";
+
+		List<Kind> kindList = kindService.query(page);
+		map.put("kind_list", kindList);
+		map.put("kind_page", page);
+		return "kind_main";
 	}
 }

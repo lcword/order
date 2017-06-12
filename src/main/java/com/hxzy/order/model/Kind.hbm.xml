@@ -11,7 +11,7 @@
         <property name="name" type="java.lang.String">
             <column name="k_name" />
         </property>
-        <set name="set" table="t_dish" inverse="false" lazy="true">
+        <set name="set" table="t_dish" inverse="false" lazy="false">
             <key>
                 <column name="d_k_id" />
             </key>

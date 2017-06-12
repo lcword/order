@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hxzy.order.dao.intf.DishDao;
+import com.hxzy.order.dao.intf.KindDao;
 import com.hxzy.order.model.Dish;
 import com.hxzy.order.page.Page;
 import com.hxzy.order.service.intf.DishService;
@@ -16,6 +17,8 @@ import com.hxzy.order.service.intf.DishService;
 public class DishServiceImpl implements DishService{
 	@Autowired
 	private DishDao dishDao;
+	@Autowired
+	private KindDao kindDao;
 	
 	private SimpleDateFormat dateFormate = new SimpleDateFormat("yyyyMMdd");
 	
@@ -25,7 +28,9 @@ public class DishServiceImpl implements DishService{
 	}
 
 	@Override
-	public void update(Dish dish) {
+	public void update(Dish dish,String kindId) {
+		dish.setKind(kindDao.queryById(kindId));
+		
 		if(dish.getId() == null || dish.getId().isEmpty()){
 			/*增加*/
 			String date = dateFormate.format(new Date());
@@ -40,7 +45,15 @@ public class DishServiceImpl implements DishService{
 			dishDao.add(dish);
 		}else{
 			/*修改*/
-			dishDao.update(dish);
+			Dish oldDish = dishDao.queryById(dish.getId());
+			
+			oldDish.setName(dish.getName());
+			oldDish.setPrice(dish.getPrice());
+			oldDish.setStatus(dish.getStatus());
+			oldDish.setPicture(dish.getPicture());
+			oldDish.setRemark(dish.getRemark());
+			
+			dishDao.update(oldDish);
 		}
 	}
 

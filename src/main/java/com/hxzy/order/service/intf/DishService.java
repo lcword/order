@@ -8,7 +8,7 @@ import com.hxzy.order.page.Page;
 public interface DishService {
 	void delete(String ids);
 
-	void update(Dish dish);
+	void update(Dish dish,String kindId);
 
 	List<Dish> query(Page page);
 

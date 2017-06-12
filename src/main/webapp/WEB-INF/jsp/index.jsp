@@ -92,8 +92,10 @@
 			<span class="icon-pencil-square-o"></span>点餐
 		</h2>
 		<ul>
-			<li><a href="./info.html" target="right"><span
-					class="icon-caret-right"></span>点餐</a></li>
+			<li><a href="query_kind" target="right"><span
+					class="icon-caret-right"></span>种类</a></li>
+			<li><a href="query_dish" target="right"><span
+					class="icon-caret-right"></span>菜品</a></li>
 		</ul>
 	</div>
 

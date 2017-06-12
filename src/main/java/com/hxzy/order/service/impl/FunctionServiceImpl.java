@@ -43,7 +43,13 @@ public class FunctionServiceImpl implements FunctionService{
 			functionDao.add(function);
 		}else{
 			/*修改*/
-			functionDao.update(function);
+			Function oldFunction = functionDao.queryById(function.getId());
+			oldFunction.setCode(function.getCode());
+			oldFunction.setRemark(function.getRemark());
+			oldFunction.setModule(function.getModule());
+			oldFunction.setSet(function.getSet());
+			
+			functionDao.update(oldFunction);
 		}
 	}
 
