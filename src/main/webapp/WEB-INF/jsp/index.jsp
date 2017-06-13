@@ -85,9 +85,9 @@
 			<span class="icon-pencil-square-o"></span>会员管理
 		</h2>
 		<ul>
-			<li><a href="./info.html" target="right"><span
+			<li><a href="query_member" target="right"><span
 					class="icon-caret-right"></span>会员信息</a></li>
-			<li><a href="./info.html" target="right"><span
+			<li><a href="query_card" target="right"><span
 					class="icon-caret-right"></span>会员卡信息</a></li>
 		</ul>
 		<h2>

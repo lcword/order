@@ -32,35 +32,28 @@ public class LoginFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println("filter >>>");
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 		Object user = req.getSession().getAttribute("login_user");
 		String uri = req.getRequestURI();
-		System.out.println("uri: "+uri);
-		System.out.println("不过滤： "+Arrays.toString(nouriArray));
 		boolean flag = true;
 		for (String nouri : nouriArray) {
-			System.out.println(uri+"="+nouri+": " + uri.endsWith(nouri));
 			if(uri.endsWith(nouri)){
 				flag = false;
 				break;
 			}
 		}
 		if(flag){
-			System.out.println("需要认证  >>>");
 			if (user == null) {
 				System.out.println("user 为空");
 				resp.sendRedirect("login");
 				return;
 			}
 			if (!getPermission(req, user, uri)) {
-				System.out.println("权限不足");
 				resp.sendRedirect("login");
 				return;
 			}
 		}
-		System.out.println("filter >>> 放行");
 		chain.doFilter(request, response);
 	}
 
@@ -75,7 +68,6 @@ public class LoginFilter implements Filter {
 		Iterator<Function> itor = set.iterator();
 		while (itor.hasNext()) {
 			Function function = itor.next();
-			System.out.println("代码： "+function.getCode());
 			if (uri.endsWith(function.getCode())) {
 				return true;
 			} 

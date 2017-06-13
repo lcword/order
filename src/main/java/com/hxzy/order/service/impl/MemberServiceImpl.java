@@ -52,6 +52,7 @@ public class MemberServiceImpl implements MemberService{
 			oldMember.setBalance(member.getBalance());
 			oldMember.setIntegral(member.getIntegral());
 			oldMember.setPhone(member.getPhone());
+			oldMember.setCard(member.getCard());
 			
 			memberDao.update(oldMember);
 		}

@@ -46,6 +46,8 @@
 				<value>com\hxzy\order\model\Module.hbm.xml</value>
 				<value>com\hxzy\order\model\Dish.hbm.xml</value>
 				<value>com\hxzy\order\model\Kind.hbm.xml</value>
+				<value>com\hxzy\order\model\Card.hbm.xml</value>
+				<value>com\hxzy\order\model\Member.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

@@ -18,7 +18,6 @@ public class LoginController {
 
 	@RequestMapping("/login")
 	public String login(Admin admin,HttpServletRequest request,HttpServletResponse response) {
-		System.out.println("login >>>");
 		Admin loginer;
 		if ((loginer = adminService.exist(admin)) != null) {
 			request.getSession().setAttribute("login_user", admin.getId());
@@ -68,7 +67,6 @@ public class LoginController {
 
 	@RequestMapping("/index")
 	public String index() {
-		System.out.println("index >>>");
 		return "index";
 	}
 

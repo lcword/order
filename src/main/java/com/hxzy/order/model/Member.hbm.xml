@@ -18,7 +18,7 @@
             <column name="m_balance" />
         </property>
         <property name="integral" type="int">
-            <column name="m_inregral" />
+            <column name="m_integral" />
         </property>
         <property name="phone" type="java.lang.String">
             <column name="m_phone" />
