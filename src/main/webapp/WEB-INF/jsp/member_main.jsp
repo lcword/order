@@ -118,7 +118,7 @@
 			<th>积分</th>
 			<th>电话</th>
 			<th>会员卡</th>
-			<th colspan="2">操作</th>
+			<th colspan="3">操作</th>
 		</tr>
 		<c:forEach items="${member_list }" var="member">
 			<tr>
@@ -133,10 +133,11 @@
 				<td>${member.card.name }</td>
 				<td><a href="delete_member?id=${member.id }" onclick="deleteMember(${member.id });">删除</a></td>
 				<td><a href="pre_update_member?id=${member.id }">修改</a></td>
+				<td><a href="pre_charge?id=${member.id }">充值</a></td>
 			</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="10" style="background-color: green"><a href="#" onclick="deleteAll();">批量删除</a></td>
+			<td colspan="11" style="background-color: green"><a href="#" onclick="deleteAll();">批量删除</a></td>
 		</tr>
 	</table>
 	<br />

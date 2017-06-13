@@ -23,7 +23,7 @@
         <property name="phone" type="java.lang.String">
             <column name="m_phone" />
         </property>
-        <many-to-one name="card" class="com.hxzy.order.model.Card" fetch="join"  unique="true">
+        <many-to-one name="card" class="com.hxzy.order.model.Card" fetch="join"  unique="true" lazy="false">
             <column name="m_c_id" />
         </many-to-one>
     </class>

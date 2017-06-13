@@ -45,7 +45,6 @@ public class LoginFilter implements Filter {
 		}
 		if(flag){
 			if (user == null) {
-				System.out.println("user 为空");
 				resp.sendRedirect("login");
 				return;
 			}

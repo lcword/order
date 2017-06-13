@@ -13,4 +13,6 @@ public interface MemberService {
 	List<Member> query(Page page);
 
 	Member queryById(String id);
+
+	void charge(String id, double money, int integral);
 }

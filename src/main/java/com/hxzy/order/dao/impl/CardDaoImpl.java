@@ -48,7 +48,7 @@ public class CardDaoImpl extends MyHibernateDaoSupport implements CardDao{
 		return getHibernateTemplate().execute(new HibernateCallback<List<Card>>() {
 			@Override
 			public List<Card> doInHibernate(Session session) throws HibernateException {
-				StringBuilder hql = new StringBuilder("FROM Card WHERE 1=1");
+				StringBuilder hql = new StringBuilder("FROM Card WHERE 1=1 AND c_status=0");
 				Query<Card> query = session.createQuery(hql.toString(),Card.class);
 				query.setFirstResult(page.getStartIndex());
 				query.setMaxResults(Page.MAXCOUNT);

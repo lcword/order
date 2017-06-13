@@ -114,6 +114,7 @@
 			<th>编号</th>
 			<th>名称</th>
 			<th>打折力度</th>
+			<th>状态</th>
 			<th colspan="2">操作</th>
 		</tr>
 		<c:forEach items="${card_list }" var="card">
@@ -123,6 +124,10 @@
 				<td>${card.id }</td>
 				<td>${card.name }</td>
 				<td>${card.per }</td>
+				<td>
+					<c:if test="${card.status == 1 }">已使用</c:if>
+					<c:if test="${card.status == 0 }">未使用</c:if>
+				</td>
 				<td><a href="delete_card?id=${card.id }" onclick="deleteCard(${card.id });">删除</a></td>
 				<td><a href="pre_update_card?id=${card.id }">修改</a></td>
 			</tr>

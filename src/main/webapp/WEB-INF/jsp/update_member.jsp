@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>更新菜品信息</title>
+<title>更新会员信息</title>
 <style type="text/css">
 	.error,span {
 		color:red;
@@ -26,7 +26,7 @@
 				name:{
 					required:true,
 				},
-				phone:"required"
+				phone:"required",
 				cardId:"required"
 			},
 			messages:{
@@ -40,7 +40,7 @@
 </script>
 </head>
 <body>
-	<form action="update_member" method="post" id="member_form" enctype="multipart/form-data">
+	<form action="update_member" method="post" id="member_form">
 		<table>
 			<input type="hidden" name="id" value="${member.id }" />
 			<tr>
@@ -48,29 +48,17 @@
 				<td><input id="name" name="name" value="${member.name}" /></td>
 			</tr>
 			<tr>
-				<td>消费</td>
-				<td><input id=expenditure name="expenditure" value="${member.expenditure}" /></td>
-			</tr>
-			<tr>
-				<td>余额</td>
-				<td><input id=balance name="balance" value="${member.balance}" /></td>
-			</tr>
-			<tr>
-				<td>积分</td>
-				<td><input id=integral name="integral" value="${member.integral}" /></td>
-			</tr>
-			<tr>
 				<td>电话</td>
-				<td><input id=phone name="phone" value="${member.phone}" /></td>
+				<td><input name="phone" value="${member.phone}" /></td>
 			</tr>
 			<tr>
 				<td>会员卡</td>
 				<td>
 					<select name="cardId">
 						<option value="${member.card.id}">${member.card.name}</option>
-							<c:forEach items="${card_list }" var="card">
-								<option value="${card.id }">${card.name }</option>
-							</c:forEach>
+						<c:forEach items="${card_list }" var="card">
+							<option value="${card.id }">${card.name }</option>
+						</c:forEach>
 					</select>
 				</td>
 			</tr>

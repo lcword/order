@@ -17,6 +17,9 @@
         <property name="level" type="int">
             <column name="c_level" />
         </property>
-        <one-to-one name="member" class="com.hxzy.order.model.Member" property-ref="card" fetch="join"></one-to-one>
+        <property name="status" type="int">
+            <column name="c_status" />
+        </property>
+        <one-to-one name="member" class="com.hxzy.order.model.Member" property-ref="card" fetch="join" lazy="false"></one-to-one>
     </class>
 </hibernate-mapping>
